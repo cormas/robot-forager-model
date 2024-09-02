@@ -27,10 +27,16 @@ RFCell class >> mineralGenerationRate: aNumber [
 	mineralGenerationRate := aNumber
 ]
 
+{ #category : 'accessing' }
+RFCell >> getMinerals [
+
+	^ self occupantsOfClass: RFMineral
+]
+
 { #category : 'testing' }
 RFCell >> hasMineral [
 
-	^ self hasOccupantsOfClass: RFMineral
+	^ self getMinerals isNotEmpty 
 ]
 
 { #category : 'accessing' }

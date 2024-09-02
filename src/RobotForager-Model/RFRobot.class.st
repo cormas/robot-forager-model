@@ -20,9 +20,10 @@ RFRobot >> allRobots: aCollection [
 { #category : 'as yet unclassified' }
 RFRobot >> collectMineral [
 
-	minerals addAll: ((self patch occupantsOfClass: RFMineral) do: [ :mineral |
-		mineral leave.
-		mineral ]).
+	minerals addAll:
+		((self patch getMinerals) do: [ :mineral |
+			 mineral leave.
+			 mineral ])
 ]
 
 { #category : 'testing' }

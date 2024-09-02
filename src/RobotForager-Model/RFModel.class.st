@@ -95,7 +95,8 @@ RFModel >> numberOfCollectedMinerals [
 RFModel >> step [
 	
 	<control>
-	self askRandom: RFRobot toDo: #step
+	"self askRandom: RFRobot toDo: #step."
+	(self shuffled: theRobots) do: #step.
 ]
 
 { #category : 'stepping' }
