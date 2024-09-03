@@ -32,6 +32,12 @@ RFModel class >> numberOfMinerals: aNumber [
 	numberOfMinerals := aNumber
 ]
 
+{ #category : 'tests - printing' }
+RFModel class >> prefix [
+	
+	^ 'RF'
+]
+
 { #category : 'as yet unclassified' }
 RFModel >> initLarge [
 
