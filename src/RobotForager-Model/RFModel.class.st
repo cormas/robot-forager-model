@@ -38,7 +38,7 @@ RFModel class >> prefix [
 	^ 'RF'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 RFModel >> initLarge [
 
 	<init>
@@ -56,7 +56,7 @@ RFModel >> initLarge [
 	theRobots do: [ :each | each allRobots: theRobots ]
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 RFModel >> initSmall [
 
 	<init>
@@ -83,15 +83,15 @@ RFModel >> initialize [
 	theMinerals := OrderedCollection new
 ]
 
-{ #category : 'as yet unclassified' }
-RFModel >> numberOfAvailableMinerals [
+{ #category : 'probes' }
+RFModel >> nbAvailableMinerals [
 
 	<probeNamed: 'Number of available minerals' color: 'E5B80B'>
 	^ theCells count: [ :cell | cell hasMineral ]
 ]
 
-{ #category : 'as yet unclassified' }
-RFModel >> numberOfCollectedMinerals [
+{ #category : 'probes' }
+RFModel >> nbCollectedMinerals [
 
 	<probeNamed: 'Number of collected minerals' color: '5579C6'>
 	^ theRobots sum: [ :robot | robot minerals size ]
@@ -101,7 +101,8 @@ RFModel >> numberOfCollectedMinerals [
 RFModel >> step [
 	
 	<control>
-	self askRandom: RFRobot toDo: #step
+	"self askRandom: RFRobot toDo: #step."
+	(self shuffled: theRobots) do: #step.
 ]
 
 { #category : 'stepping' }
