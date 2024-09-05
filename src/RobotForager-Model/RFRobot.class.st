@@ -78,19 +78,10 @@ RFRobot >> neighbourWithMineral [
 RFRobot >> pov [
 
 	<pov>
-	^ RFColor blue
-]
-
-{ #category : 'accessing' }
-RFRobot >> shapeOfPOV [
-
-	^ #star
-]
-
-{ #category : 'accessing' }
-RFRobot >> sizeOfPOV [
-
-	^ 15
+	^ CMPointOfView
+		color: RFColor blue
+		shape: #star
+		size: 15
 ]
 
 { #category : 'control' }

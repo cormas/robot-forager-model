@@ -11,17 +11,8 @@ Class {
 RFMineral >> pov [
 
 	<pov>
-	^ RFColor gold
-]
-
-{ #category : 'as yet unclassified' }
-RFMineral >> shapeOfPOV [
-
-	^ #diamond
-]
-
-{ #category : 'as yet unclassified' }
-RFMineral >> sizeOfPOV [
-
-	^ 7
+	^ CMPointOfView
+		color: RFColor gold
+		shape: #diamond
+		size: 7
 ]

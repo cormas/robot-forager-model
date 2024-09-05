@@ -21,5 +21,5 @@ RFCell >> hasMineral [
 RFCell >> pov [
 
 	<pov>
-	^ Color gray lighter
+	^ CMPointOfView color: Color gray lighter
 ]
