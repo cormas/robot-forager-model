@@ -56,10 +56,10 @@ RFModel >> initLarge [
 
 	<init>
 	self
-		createGridNumberOfRows: 27
-		numberOfColumns: 27
-		neighbourhood: 8
-		closed: true.
+		createGridNumberOfRows: 26
+		numberOfColumns: 26
+		neighbourhood: 6
+		closed: false.
 		
 	self class numberOfMinerals: 400.
 		
@@ -76,7 +76,7 @@ RFModel >> initSmall [
 	self
 		createGridNumberOfRows: 5
 		numberOfColumns: 5
-		neighbourhood: 8
+		neighbourhood: #flat6
 		closed: true.
 		
 	self class numberOfMinerals: 20.
