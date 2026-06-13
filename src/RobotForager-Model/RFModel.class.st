@@ -60,13 +60,15 @@ RFModel >> initLarge [
 		numberOfColumns: 26
 		neighbourhood: 6
 		closed: false.
-		
+
 	self class numberOfMinerals: 400.
-		
-	self createN: 10 randomlyLocatedAloneEntities: RFRobot. 
-	self createN: self class numberOfMinerals randomlyLocatedAloneEntities: RFMineral.
-	
-	(self @@ RFRobot) do: [ :each | each allRobots: (self @@ RFRobot) ]
+
+	self create: 10 randomlyLocatedAloneEntitiesOfClass: RFRobot.
+	self
+		create: self class numberOfMinerals
+		randomlyLocatedAloneEntitiesOfClass: RFMineral.
+
+	self @@ RFRobot do: [ :each | each allRobots: self @@ RFRobot ]
 ]
 
 { #category : 'initialization' }
@@ -78,13 +80,15 @@ RFModel >> initSmall [
 		numberOfColumns: 5
 		neighbourhood: #flat6
 		closed: true.
-		
+
 	self class numberOfMinerals: 20.
-		
-	self createN: 2 randomlyLocatedAloneEntities: RFRobot. 
-	self createN: self class numberOfMinerals randomlyLocatedAloneEntities: RFMineral.
-	
-	(self @@ RFRobot) do: [ :each | each allRobots: (self @@ RFRobot) ]
+
+	self create: 2 randomlyLocatedAloneEntitiesOfClass: RFRobot.
+	self
+		create: self class numberOfMinerals
+		randomlyLocatedAloneEntitiesOfClass: RFMineral.
+
+	self @@ RFRobot do: [ :each | each allRobots: self @@ RFRobot ]
 ]
 
 { #category : 'probes' }
@@ -113,5 +117,5 @@ RFModel >> step [
 RFModel >> stepCollaboratively [
 	
 	<control>
-	self askRandom: RFRobot toDo: #stepCollaboratively 
+	(self shuffled: self @@ RFRobot) do: #stepCollaboratively 
 ]
