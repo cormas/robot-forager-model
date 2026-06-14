@@ -81,9 +81,7 @@ RFModel >> initLarge [
 { #category : 'initialization' }
 RFModel >> initSmall [
 
-	<init>
-	self makeAgentsScatteredInCells.
-	
+	<init>	
 	self
 		createGridNumberOfRows: 5
 		numberOfColumns: 5

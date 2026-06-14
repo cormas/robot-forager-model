@@ -1,6 +1,6 @@
 Class {
 	#name : 'RFTileset',
-	#superclass : 'Object',
+	#superclass : 'CMTileset',
 	#category : 'RobotForager-Model',
 	#package : 'RobotForager-Model'
 }

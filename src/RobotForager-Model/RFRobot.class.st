@@ -69,10 +69,7 @@ RFRobot >> moveCollaboratively [
 { #category : 'as yet unclassified' }
 RFRobot >> moveRandomly [
 
-	"self randomWalkConstrainedBy: [ :each | each hasNoOccupants ]"
-	positionInCell :=
-		(0 max: (1 min: (positionInCell x + (self randomBetween: -0.1 and: 0.1)))) @
-		(0 max: (1 min: (positionInCell y + (self randomBetween: -0.1 and: 0.1))))
+	self randomWalkConstrainedBy: [ :each | each hasNoOccupants ]
 ]
 
 { #category : 'testing' }
@@ -88,7 +85,7 @@ RFRobot >> pov [
 		
 	^ CMPointOfView
 		tile: RFTileset robot
-		size: 0.8
+		size: 0.7
 ]
 
 { #category : 'pov' }
