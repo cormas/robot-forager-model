@@ -7,7 +7,8 @@ Class {
 		'numberOfMinerals',
 		'numberOfRobots',
 		'neighbourhoodType',
-		'isClosedEnvironment'
+		'isClosedEnvironment',
+		'shouldCommunicate'
 	],
 	#category : 'RobotForager-Model',
 	#package : 'RobotForager-Model'
@@ -182,19 +183,43 @@ RFModel >> numberOfRows: anObject [
 	numberOfRows := anObject
 ]
 
+{ #category : 'parameters' }
+RFModel >> shouldCommunicate [
+	<parameterBooleanDefault: false>
+	^ shouldCommunicate
+]
+
+{ #category : 'parameters' }
+RFModel >> shouldCommunicate: anObject [
+
+	shouldCommunicate := anObject
+]
+
 { #category : 'stepping' }
 RFModel >> step [
 	
 	<control>
-	"self askRandom: RFRobot toDo: #step."
-	(self shuffled: (self @@ RFRobot)) do: #step.
+	(self @@? RFRobot) do: #step.
 ]
 
 { #category : 'stepping' }
 RFModel >> stepCollaboratively [
 	
 	<control>
-	(self shuffled: self @@ RFRobot) do: #stepCollaboratively 
+	(self @@? RFRobot) do: #stepCollaboratively 
+]
+
+{ #category : 'stepping' }
+RFModel >> stepParametrizable [
+	
+	<control>
+	| selector |
+	
+	selector := shouldCommunicate
+		ifTrue: [ #stepCollaboratively ]
+		ifFalse: [ #step ].
+		
+	(self @@? RFRobot) do: selector
 ]
 
 { #category : 'pov' }
