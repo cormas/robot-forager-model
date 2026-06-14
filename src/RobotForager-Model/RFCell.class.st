@@ -22,12 +22,18 @@ RFCell >> pov [
 
 	<pov>
 	
-	^ CMPointOfView tile: CMTileset rockySand
+	^ CMPointOfView new
+		tile: RFTileset floor;
+		borderWidth: 0.02;
+		borderColor: CMColor brown ;
+		yourself
 ]
 
 { #category : 'accessing' }
 RFCell >> povSimple [
 
 	<pov>
-	^ CMPointOfView color: Color gray lighter
+	^ CMPointOfView new
+		color: Color gray lighter
+		yourself
 ]

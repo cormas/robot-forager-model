@@ -11,16 +11,17 @@ RFMineral >> pov [
 	<pov>
 		
 	^ CMPointOfView
-		tile: CMTileset mineral
-		size: 0.7
+		tile: RFTileset mineral
+		size: 0.6
 ]
 
 { #category : 'pov' }
 RFMineral >> povSimple [
 
 	<pov>
-	^ CMPointOfView
-		color: CMColor gold
-		shape: #diamond
-		size: 0.4
+	^ CMPointOfView new
+		color: CMColor gold;
+		shape: #diamond;
+		size: 0.4;
+		yourself
 ]

@@ -14,6 +14,12 @@ RFModel class >> aboutThisModel [
 	^ 'RobotForager — Inspired by Steels (1989), this model simulates autonomous robots cooperating to collect scattered mineral resources on a grid. Robots move asynchronously, scanning neighboring cells for minerals and collecting them when found; otherwise, they explore randomly. The environment is a square grid with mutually exclusive placement of robots and minerals at initialization. Two scenarios are provided: a small 5×5 grid with 2 robots and 20 minerals, and a large 27×27 grid with 10 robots and 200 minerals. The model illustrates decentralized coordination in distributed agent systems, applicable to tasks such as planetary exploration, waste cleanup, or resource harvesting.'
 ]
 
+{ #category : 'as yet unclassified' }
+RFModel class >> documentationUrl [
+
+	^ 'https://cormas.org/docs/robot-forager-tutorial'
+]
+
 { #category : 'initialization' }
 RFModel class >> initializeParameters [
 
@@ -58,7 +64,7 @@ RFModel >> initLarge [
 	self
 		createGridNumberOfRows: 26
 		numberOfColumns: 26
-		neighbourhood: 6
+		neighbourhood: 4
 		closed: false.
 
 	self class numberOfMinerals: 400.
@@ -68,17 +74,20 @@ RFModel >> initLarge [
 		create: self class numberOfMinerals
 		randomlyLocatedAloneEntitiesOfClass: RFMineral.
 
-	self @@ RFRobot do: [ :each | each allRobots: self @@ RFRobot ]
+	self @@ RFRobot do: [ :each | each allRobots: self @@ RFRobot ].
+	self useSimplePov
 ]
 
 { #category : 'initialization' }
 RFModel >> initSmall [
 
 	<init>
+	self makeAgentsScatteredInCells.
+	
 	self
 		createGridNumberOfRows: 5
 		numberOfColumns: 5
-		neighbourhood: #flat6
+		neighbourhood: 6
 		closed: true.
 
 	self class numberOfMinerals: 20.
@@ -88,7 +97,8 @@ RFModel >> initSmall [
 		create: self class numberOfMinerals
 		randomlyLocatedAloneEntitiesOfClass: RFMineral.
 
-	self @@ RFRobot do: [ :each | each allRobots: self @@ RFRobot ]
+	self @@ RFRobot do: [ :each | each allRobots: self @@ RFRobot ].
+	self useImagePov.
 ]
 
 { #category : 'probes' }
@@ -105,6 +115,12 @@ RFModel >> nbCollectedMinerals [
 	^ (self @@ RFRobot) sum: [ :robot | robot minerals size ]
 ]
 
+{ #category : 'as yet unclassified' }
+RFModel >> noMoreMinerals [
+	<boolean>
+	^ self nbAvailableMinerals = 0
+]
+
 { #category : 'stepping' }
 RFModel >> step [
 	
@@ -118,4 +134,20 @@ RFModel >> stepCollaboratively [
 	
 	<control>
 	(self shuffled: self @@ RFRobot) do: #stepCollaboratively 
+]
+
+{ #category : 'as yet unclassified' }
+RFModel >> useImagePov [
+
+	RFCell activePovSelector: #pov.
+	RFRobot activePovSelector: #pov.
+	RFMineral activePovSelector: #pov
+]
+
+{ #category : 'as yet unclassified' }
+RFModel >> useSimplePov [
+
+	RFCell activePovSelector: #povSimple.
+	RFRobot activePovSelector: #povSimple.
+	RFMineral activePovSelector: #povSimple
 ]
