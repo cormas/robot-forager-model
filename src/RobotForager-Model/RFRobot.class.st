@@ -50,7 +50,7 @@ RFRobot >> move [
 	self cell neighbourhood
 		detect: [ :each | each hasMineral ]
 		ifFound: [ :each | self moveTo: each ]
-		ifNone: [ self randomWalk ]
+		ifNone: [ self moveRandomly ]
 ]
 
 { #category : 'as yet unclassified' }
@@ -63,7 +63,13 @@ RFRobot >> moveCollaboratively [
 			allRobots
 				detect: [ :robot | robot hasNeighbourWithMineral ]
 				ifFound: [ :robot | self moveTowards: robot neighbourWithMineral ]
-				ifNone: [ self randomWalk ] ]
+				ifNone: [ self moveRandomly ] ]
+]
+
+{ #category : 'as yet unclassified' }
+RFRobot >> moveRandomly [
+
+	self randomWalkConstrainedBy: [ :each | each hasNoOccupants ]
 ]
 
 { #category : 'testing' }
@@ -76,15 +82,10 @@ RFRobot >> neighbourWithMineral [
 RFRobot >> pov [
 
 	<pov>
-	| image |
-	
-	image := (self cormasModel spaceModel numberOfRows < 10)
-		ifTrue: [ RFIcons robotLarge ]
-		ifFalse: [ RFIcons robot ].
 		
 	^ CMPointOfView
-		image: image
-		size: 0.9
+		tile: RFTileset robot
+		size: 0.7
 ]
 
 { #category : 'pov' }

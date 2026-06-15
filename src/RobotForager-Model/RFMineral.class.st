@@ -9,23 +9,19 @@ Class {
 RFMineral >> pov [
 
 	<pov>
-	| image |
-	
-	image := (self cormasModel spaceModel numberOfRows < 10)
-		ifTrue: [ RFIcons mineralLarge ]
-		ifFalse: [ RFIcons mineral ].
 		
 	^ CMPointOfView
-		image: image
-		size: 0.9
+		tile: RFTileset mineral
+		size: 0.6
 ]
 
 { #category : 'pov' }
 RFMineral >> povSimple [
 
 	<pov>
-	^ CMPointOfView
-		color: CMColor gold
-		shape: #diamond
-		size: 0.4
+	^ CMPointOfView new
+		color: CMColor gold;
+		shape: #diamond;
+		size: 0.4;
+		yourself
 ]
