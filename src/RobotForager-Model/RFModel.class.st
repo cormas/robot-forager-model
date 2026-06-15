@@ -86,9 +86,26 @@ RFModel >> initSmall [
 	numberOfColumns := 5.
 	numberOfMinerals := 20.
 	numberOfRobots := 2.
+	neighbourhoodType := #four.
+	isClosedEnvironment := true.
 	
 	self initParametrizable.
 	self useImagePov.
+]
+
+{ #category : 'as yet unclassified' }
+RFModel >> initSmallHexagon [
+	
+	<init>
+	numberOfRows := 5.
+	numberOfColumns := 5.
+	numberOfMinerals := 20.
+	numberOfRobots := 2.
+	neighbourhoodType := #pointy6.
+	isClosedEnvironment := true.
+	
+	self initParametrizable.
+	self useImagePov
 ]
 
 { #category : 'parameters' }
