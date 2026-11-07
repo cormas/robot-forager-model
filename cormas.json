@@ -1,0 +1,5 @@
+{
+	"baseline" : "RobotForagerModel",
+	"summary" : "Robots collecting minerals, after Steels (1989). Autonomous robots move on a grid, collect the minerals they find in the neighbouring cells and otherwise explore at random, illustrating decentralised coordination. A small and a large scenario are provided.",
+	"cormas" : "1.0-dev"
+}
