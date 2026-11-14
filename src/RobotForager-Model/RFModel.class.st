@@ -52,9 +52,8 @@ RFModel >> initLarge [
 	numberOfColumns := 26.
 	numberOfMinerals := 400.
 	numberOfRobots := 10.
-	
-	self initParametrizable.
-	self useSimplePov
+
+	self initParametrizable
 ]
 
 { #category : 'init' }
@@ -81,14 +80,13 @@ RFModel >> initParametrizable [
 { #category : 'init' }
 RFModel >> initSmall [
 
-	<init>	
+	<init>
 	numberOfRows := 5.
 	numberOfColumns := 5.
 	numberOfMinerals := 20.
 	numberOfRobots := 2.
-	
-	self initParametrizable.
-	self useImagePov.
+
+	self initParametrizable
 ]
 
 { #category : 'parameters' }
@@ -183,6 +181,17 @@ RFModel >> numberOfRows: anObject [
 	numberOfRows := anObject
 ]
 
+{ #category : 'perspectives' }
+RFModel >> perspectiveSimple [
+	"Show the robots, the minerals and the cells with simple shapes and colors instead of pictures, which suits large grids"
+
+	<perspective>
+	^ CMPerspective new
+		  show: RFCell as: #aspectSimple:;
+		  show: RFMineral as: #aspectSimple:;
+		  show: RFRobot as: #aspectSimple:
+]
+
 { #category : 'parameters' }
 RFModel >> shouldCommunicate [
 	<parameterBooleanDefault: false>
@@ -220,20 +229,4 @@ RFModel >> stepParametrizable [
 		ifFalse: [ #step ].
 		
 	(self @@? RFRobot) do: selector
-]
-
-{ #category : 'pov' }
-RFModel >> useImagePov [
-
-	RFCell activePovSelector: #pov.
-	RFRobot activePovSelector: #pov.
-	RFMineral activePovSelector: #pov
-]
-
-{ #category : 'pov' }
-RFModel >> useSimplePov [
-
-	RFCell activePovSelector: #povSimple.
-	RFRobot activePovSelector: #povSimple.
-	RFMineral activePovSelector: #povSimple
 ]

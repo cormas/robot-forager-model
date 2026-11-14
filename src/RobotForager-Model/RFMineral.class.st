@@ -5,23 +5,21 @@ Class {
 	#package : 'RobotForager-Model'
 }
 
-{ #category : 'pov' }
-RFMineral >> pov [
+{ #category : 'aspects' }
+RFMineral >> aspectDefault: look [
 
-	<pov>
-		
-	^ CMPointOfView
-		tile: RFTileset mineral
+	<aspect>
+	look
+		tile: #mineral;
 		size: 0.6
 ]
 
-{ #category : 'pov' }
-RFMineral >> povSimple [
+{ #category : 'aspects' }
+RFMineral >> aspectSimple: look [
 
-	<pov>
-	^ CMPointOfView new
+	<aspect>
+	look
 		color: CMColor gold;
 		shape: #diamond;
-		size: 0.4;
-		yourself
+		size: 0.4
 ]

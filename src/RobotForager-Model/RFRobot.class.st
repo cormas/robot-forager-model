@@ -15,6 +15,25 @@ RFRobot >> allRobots: aCollection [
 	allRobots := aCollection
 ]
 
+{ #category : 'aspects' }
+RFRobot >> aspectDefault: look [
+
+	<aspect>
+	look
+		tile: #robot;
+		size: 0.7
+]
+
+{ #category : 'aspects' }
+RFRobot >> aspectSimple: look [
+
+	<aspect>
+	look
+		color: CMColor blue;
+		shape: #star;
+		size: 0.7
+]
+
 { #category : 'as yet unclassified' }
 RFRobot >> collectMineral [
 	<action>
@@ -76,26 +95,6 @@ RFRobot >> moveRandomly [
 RFRobot >> neighbourWithMineral [
 
 	^ self cell neighbourhood detect: [ :each | each hasMineral ]
-]
-
-{ #category : 'pov' }
-RFRobot >> pov [
-
-	<pov>
-		
-	^ CMPointOfView
-		tile: RFTileset robot
-		size: 0.7
-]
-
-{ #category : 'pov' }
-RFRobot >> povSimple [
-
-	<pov>
-	^ CMPointOfView
-		color: CMColor blue
-		shape: #star
-		size:  0.7
 ]
 
 { #category : 'control' }
