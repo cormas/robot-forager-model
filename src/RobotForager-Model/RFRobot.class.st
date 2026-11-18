@@ -20,7 +20,7 @@ RFRobot >> aspectDefault: look [
 
 	<aspect>
 	look
-		tile: #robot;
+		image: 'robot';
 		size: 0.7
 ]
 

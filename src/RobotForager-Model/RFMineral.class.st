@@ -10,7 +10,7 @@ RFMineral >> aspectDefault: look [
 
 	<aspect>
 	look
-		tile: #mineral;
+		image: 'mineral';
 		size: 0.6
 ]
 

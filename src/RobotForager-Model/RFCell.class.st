@@ -10,7 +10,7 @@ RFCell >> aspectDefault: look [
 
 	<aspect>
 	look
-		tile: #floor;
+		image: 'floor';
 		borderThickness: 0.02;
 		borderColor: CMColor brown
 ]
